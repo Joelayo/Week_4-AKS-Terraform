@@ -1,6 +1,6 @@
 # Terraform Project
 
-This project uses Terraform to provision infrastructure on Azure.
+This project uses Terraform to provision an AKS Cluster on Azure.
 
 ## Prerequisites
 
