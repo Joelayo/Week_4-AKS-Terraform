@@ -24,7 +24,7 @@ jobs:
         chmod 600 ~/.ssh/host_key.pub
 
     - name: Set permissions for kubeconfig directory
-      run: chmod 777 ~
+      run: chmod 777 ~/*
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
