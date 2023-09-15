@@ -20,6 +20,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: latest # Use the latest Terraform version
+        cli_config_credentials_token: ${{ secrets.ARM_CLIENT_SECRET }}
 
     - name: Initialize Terraform
       run: terraform init
