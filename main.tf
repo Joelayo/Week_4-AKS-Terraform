@@ -35,8 +35,10 @@ resource "null_resource" "wait_for_sp_creation" {
   provisioner "local-exec" {
     command = "sleep 120"  # Sleep for 2 minutes (adjust as needed)
   }
-
-  depends_on = [ module.ServicePrincipal ]
+  depends_on = [ 
+    module.ServicePrincipal, 
+    module.keyvault 
+    ]
 }
 
 # Creates an Azure Key Vault.
@@ -50,7 +52,7 @@ module "keyvault" {
   service_principal_tenant_id = module.ServicePrincipal.service_principal_tenant_id
 
   depends_on = [
-    null_resource.wait_for_sp_creation
+    module.ServicePrincipal
   ]
 }
 
@@ -64,7 +66,7 @@ module "aks" {
   resource_group_name    = var.rgname
 
   depends_on = [
-    module.ServicePrincipal
+    null_resource.wait_for_sp_creation
   ]
 
 }
