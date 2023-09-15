@@ -1,10 +1,7 @@
 name: Cleanup Resources
 
 on:
-  workflow_run:
-    workflows: ["Terraform Workflow"]
-    types:
-      - completed
+  workflow_dispatch: # Manually trigger the workflow
 
 jobs:
   cleanup:
