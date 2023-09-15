@@ -23,9 +23,6 @@ jobs:
         echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/host_key.pub
         chmod 600 ~/.ssh/host_key.pub
 
-    - name: Set permissions for kubeconfig directory
-      run: chmod 777 ~/*
-
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -40,6 +37,13 @@ jobs:
     - name: Apply Terraform
       run: |
         terraform apply -auto-approve || (echo "Terraform apply failed, destroying resources" && terraform destroy -auto-approve)
+
+    - name: Export KUBECONFIG
+      run: |
+        export KUBECONFIG=$(terraform output module.aks.config)
+
+    - name: Install jq
+      run: sudo apt-get install jq -y
 
     - name: Create ArgoCD Namespace
       run: kubectl create namespace argocd
