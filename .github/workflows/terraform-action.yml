@@ -64,3 +64,7 @@ jobs:
       run: |
         export ARGOCD_PASSWORD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
         echo "ARGOCD_SERVER PASSWORD: $ARGOCD_PASSWORD"
+
+    - name: ArgoCD Apply Manifest File
+      run: |
+        kubectl apply -f=argo-sync.yaml
