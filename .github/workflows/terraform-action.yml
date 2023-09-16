@@ -67,4 +67,4 @@ jobs:
 
     - name: ArgoCD Apply Manifest File
       run: |
-        kubectl apply -f=argo-sync.yaml
+        kubectl apply -f=argocd-sync.yaml
