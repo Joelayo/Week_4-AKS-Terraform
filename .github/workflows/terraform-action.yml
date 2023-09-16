@@ -40,7 +40,7 @@ jobs:
 
     - name: Export KUBECONFIG
       run: |
-        export KUBECONFIG=kubeconfig
+        cp ./kubeconfig ~/.kube/config
 
     - name: Install jq
       run: sudo apt-get install jq -y
