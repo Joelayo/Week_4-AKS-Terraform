@@ -72,9 +72,9 @@ module "aks" {
 }
 
 # Generates a local kubeconfig file for the AKS cluster.
-# resource "local_file" "kubeconfig" {
-#   depends_on   = [module.aks]
-#   filename     = "./kubeconfig"
-#   content      = module.aks.config
+resource "local_file" "kubeconfig" {
+  depends_on   = [module.aks]
+  filename     = "./kubeconfig"
+  content      = module.aks.config
   
-# }
+}

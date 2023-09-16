@@ -40,7 +40,7 @@ jobs:
 
     - name: Export KUBECONFIG
       run: |
-        export KUBECONFIG=$(terraform output module.aks.config)
+        export KUBECONFIG="./kubeconfig"
 
     - name: Install jq
       run: sudo apt-get install jq -y
