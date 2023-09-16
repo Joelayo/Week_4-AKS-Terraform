@@ -40,7 +40,7 @@ jobs:
 
     - name: Export KUBECONFIG
       run: |
-        sudo mkdir -p ~/.kube/config
+        sudo mkdir -p ~/.kube/
         sudo cp ./kubeconfig ~/.kube/config
 
     - name: Install jq
