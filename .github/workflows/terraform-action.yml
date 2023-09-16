@@ -57,5 +57,5 @@ jobs:
       
     - name: Export ARGOCD_SERVER IP
       run: |
-        export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.loadBalancer.ingress[0].ip'`
+        sudo export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.loadBalancer.ingress[0].ip'`
         echo "ARGOCD_SERVER IP: $ARGOCD_SERVER"
